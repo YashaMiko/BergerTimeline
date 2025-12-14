@@ -3,10 +3,392 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U.S. Tech Corporation Timeline</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #ccc;
+        }
+
+        .timeline-wrapper {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background-color: #ddd;
+            margin-bottom: 40px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #e7b743;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .timeline-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-item {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .timeline-item.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .timeline-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            min-height: 400px;
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            font-size: 2em;
+            color: #e7b743;
+            margin-bottom: 20px;
+        }
+
+        .timeline-content p {
+            font-size: 1.15em;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-style: italic;
+            margin-top: 20px;
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .nav-button {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            font-family: 'Georgia', serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-button:hover {
+            background-color: #e7b743;
+        }
+
+        .nav-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .nav-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .event-counter {
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .key-event-badge {
+            display: inline-block;
+            background-color: #e7b743;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .timeline-content {
+                padding: 25px;
+                min-height: 300px;
+            }
+
+            .timeline-date {
+                font-size: 1.5em;
+            }
+
+            .timeline-content p {
+                font-size: 1em;
+            }
+
+            .nav-button {
+                padding: 12px 20px;
+                font-size: 1em;
+            }
+
+            .photo-placeholder {
+                height: 200px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <img class= "BergerSign" src="images/20251211_dumpedinberger_KR_114 (1).jpg">
+    <div class="header">
+        <h1>How did Berger, Missouri get all this hazardous material?</h1>
     </div>
+
+    <div class="timeline-wrapper">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="timeline-container" id="timelineContainer">
+            <div class="timeline-item active" data-event="1">
+                <div class="timeline-date"> Press the "Next" Button to start
+                    <div class="photo-placeholder"><img src="images/20251211_dumpedinberger_KR_114 (1).jpg" alt=""></div>
+                </div>
+            </div>
+
+        <div class="timeline-container" id="timelineContainer">
+            <div class="timeline-item active" data-event="1">
+                <div class="timeline-content">
+                    <div class="timeline-date">2000</div>
+                    <p>Raymond Williams, owner of U.S. Tech Corporation, hires a Mississippi company called Hydromex to recycle spent blast media into blocks. The powder came from Williams’ clients, who would use his abrasive products to strip paint off of vehicles and equipment, leaving behind a powder contaminated with toxic heavy metals. </p>
+                    <div class="photo-placeholder">[Photo: U.S. Tech Corporation facility or blast media operation]</div>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-event="2">
+                <div class="timeline-content">
+                    <div class="timeline-date">2002</div>
+                    <p>Mississippi regulators discover Hydromex wasn’t recycling the material properly. The company was creating subpar blocks and burying the material to hide it. </p>
+                    <div class="photo-placeholder">[Photo: Improper disposal site or buried material]</div>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-event="3">
+                <div class="timeline-content">
+                    <div class="timeline-date">2003</div>
+                    <p>Williams offers to recycle the material so his clients don’t foot the bill and his contracts remain intact. He and the Mississippi Department of Environmental Quality strike a deal, offering him an exemption to some permitting requirements in exchange for recycling the material within two years. </p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-event="4">
+                <div class="timeline-content">
+                    <div class="timeline-date">2007</div>
+                    <p>WWilliams finishes recycling the above-ground material — a few years behind schedule. During that process, he and Mississippi regulators discovered there was more material underground than they had thought. </p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-event="5">
+                <div class="timeline-content">
+                    <div class="timeline-date">2011</div>
+                    <p>Williams and MDEQ amend their original order, allowing Williams to recover and recycle the below-ground material into concrete blocks. They agree to a deadline of two years. </p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-event="6">
+                <div class="timeline-content">
+                    <div class="timeline-date">Early 2013</div>
+                    <p>Williams and the Missouri Department of Transportation agree to use the recycled powder as road base in an upcoming project. MDEQ amends the agreement, striking Williams’ ability to recycle the material into concrete blocks and replacing it with the roadbase provision. </p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-event="7">
+                <div class="timeline-content">
+                    <div class="timeline-date">October 2013</div>
+                    <p>The funding for the MDOT project falls through. Williams asks MDEQ if he can move the material to another site until the state has funding. It says no. </p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-event="8">
+                <div class="timeline-content">
+                    <div class="timeline-date">October - December 2013</div>
+                    <p>Williams trucks the material to a Berger, Missouri warehouse owned by the family of Daryl Duncan, his former employee. There, they say they plan to recycle the material into railroad ties.</p>
+                    <div class="photo-placeholder">[Photo: Berger warehouse exterior]</div>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-event="9">
+                <div class="timeline-content">
+                    <span class="key-event-badge">KEY EVENT</span>
+                    <div class="timeline-date">December 2013</div>
+                    <p>After learning about the material, the Missouri Department of Natural Resources tells Williams to stop trucking material, which they view as non-recyclable hazardous waste. They begin investigating the site.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-event="10">
+                <div class="timeline-content">
+                    <div class="timeline-date">2017</div>
+                    <p>The federal government indicts Williams, Duncan and his wife, Penny, on charges of conspiracy to transport hazardous waste.</p>
+                    <div class="photo-placeholder">[Photo: Federal courthouse or legal documents]</div>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-event="11">
+                <div class="timeline-content">
+                    <span class="key-event-badge">KEY EVENT</span>
+                    <div class="timeline-date">2018</div>
+                    <p>Williams and the Duncans plead guilty. Williams agrees to pay $1.5 million for environmental clean-up of the Berger site. The Duncans' plea agreements are not public.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-event="12">
+                <div class="timeline-content">
+                    <div class="timeline-date">2019</div>
+                    <p>The EPA cleans up the Berger site under the Superfund program, removing 13 million pounds of drums and sacks filled with spent blast media.</p>
+                    <div class="photo-placeholder">[Photo: EPA cleanup operation with drums and equipment]</div>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-event="13">
+                <div class="timeline-content">
+                    <div class="timeline-date">2025</div>
+                    <p>The EPA announces it has completed receiving money for the clean up from U.S. Tech's customers, including Boeing, Lockheed Martin and the Department of Defense.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button class="nav-button" id="prevBtn" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+                Previous
+            </button>
+            <span class="event-counter" id="eventCounter">1 / 13</span>
+            <button class="nav-button" id="nextBtn">
+                Next
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const items = document.querySelectorAll('.timeline-item');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const eventCounter = document.getElementById('eventCounter');
+        const progressFill = document.getElementById('progressFill');
+        const totalEvents = items.length;
+        let currentEvent = 0;
+
+        function showEvent(index) {
+            items.forEach((item, i) => {
+                item.classList.remove('active');
+                if (i === index) {
+                    item.classList.add('active');
+                }
+            });
+
+            // Update counter
+            eventCounter.textContent = `${index + 1} / ${totalEvents}`;
+
+            // Update progress bar
+            const progress = ((index + 1) / totalEvents) * 100;
+            progressFill.style.width = `${progress}%`;
+
+            // Update button states
+            prevBtn.disabled = index === 0;
+            nextBtn.disabled = index === totalEvents - 1;
+
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentEvent > 0) {
+                currentEvent--;
+                showEvent(currentEvent);
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentEvent < totalEvents - 1) {
+                currentEvent++;
+                showEvent(currentEvent);
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' && currentEvent < totalEvents - 1) {
+                currentEvent++;
+                showEvent(currentEvent);
+            } else if (e.key === 'ArrowLeft' && currentEvent > 0) {
+                currentEvent--;
+                showEvent(currentEvent);
+            }
+        });
+
+        // Initialize
+        showEvent(0);
+    </script>
 </body>
 </html>
